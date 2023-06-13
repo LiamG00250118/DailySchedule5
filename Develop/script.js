@@ -23,35 +23,57 @@ $(function () {
 });
 
 
-var hour9 = $('.hour-9');
-var hour10 = $('.hour-10');
-var hour11 = $('.hour-11');
-var hour12 = $('.hour-12');
-var hour13 = $('.hour-13');
-var hour14 = $('.hour-14');
-var hour15 = $('.hour-15');
-var hour16 = $('.hour-16');
-var hour17= $('.hour-17');
+
+var hour9 = $('#hour-9');
+var hour10 = $('#hour-10');
+var hour11 = $('#hour-11');
+var hour12 = $('#hour-12');
+var hour13 = $('#hour-13');
+var hour14 = $('#hour-14');
+var hour15 = $('#hour-15');
+var hour16 = $('#hour-16');
+var hour17= $('#hour-17');
 var currentTime = dayjs();
 var hours = currentTime.hour();
 var minutes = currentTime.minute();
 var seconds = currentTime.second();
-var times = [9, 10, 11, 12, 1, 2, 3, 4, 5];
+var times = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+var times1 = [hour9, hour10, hour11, hour12, hour13, hour14, hour15, hour16, hour17];
+console.log(hours);
 
 
-function setTime() {
-  
 
+function setTime(index) {
+  if (times[index] == hours) {
+    console.log(times[index]);
+
+    console.log(times1[index]);
+
+    times1[index].removeClass('past future');
+    times1[index].addClass('present');
+  }
+
+  if (times[index] < hours) {
+    console.log(times[index]);
+
+    console.log(times1[index]);
+
+    times1[index].removeClass('present future');
+    times1[index].addClass('past');
+  }
+
+  if (times[index] > hours) {
+    console.log(times[index]);
+
+    console.log(times1[index]);
+
+    times1[index].removeClass('past present');
+    times1[index].addClass('future');
+  }
 }
 
 
-
-
-console.log(hours);
-console.log(minutes);
-console.log(seconds);
-
-$.each(times, setTime());
+$.each(times, setTime)
 
 
 

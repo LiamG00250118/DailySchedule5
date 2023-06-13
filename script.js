@@ -1,29 +1,5 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-$(function () {
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-  //
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
-});
 
-
-
+//initial variable setup
 var hour9 = $('#hour-9');
 var hour10 = $('#hour-10');
 var hour11 = $('#hour-11');
@@ -42,14 +18,15 @@ var times = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 var times1 = [hour9, hour10, hour11, hour12, hour13, hour14, hour15, hour16, hour17];
 console.log(hours);
 
-
+//more variables
 var day = currentTime.date();
 var month = currentTime.month();
 var year = currentTime.year();
 
+//display the date on the top
 dateDisplay.text("The current day is Month: " + month + " Day: " + day + " Year: " + year);
 
-
+//variables for buttons and input text boxes
 var text1 = $('#text1');
 var button1 = $('#button1');
 var text2 = $('#text2');
@@ -69,6 +46,7 @@ var button8 = $('#button8');
 var text9 = $('#text9');
 var button9 = $('#button9');
 
+//setting values after a refresh
 text1.val(localStorage.getItem('9am'));
 text2.val(localStorage.getItem('10am'));
 text3.val(localStorage.getItem('11am'));
@@ -79,6 +57,8 @@ text7.val(localStorage.getItem('3pm'));
 text8.val(localStorage.getItem('4pm'));
 text9.val(localStorage.getItem('5pm'));
 
+
+//functions for coloring
 function setTime(index) {
   if (times[index] == hours) {
     console.log(times[index]);
@@ -116,7 +96,7 @@ $.each(times, setTime)
 
 
 
-
+//button click assigners
 button1.click(saveToLocal1);
 button2.click(saveToLocal2);
 button3.click(saveToLocal3);
@@ -128,6 +108,7 @@ button8.click(saveToLocal8);
 button9.click(saveToLocal9);
 
 
+//saving data on click to local functions
 function saveToLocal1() {
   var inputValue = text1.val();
   console.log(inputValue);
